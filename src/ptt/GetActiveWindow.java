@@ -31,11 +31,10 @@ public class GetActiveWindow {
 		    try
 		    {
 		    Process process = runtime.exec(args);
-		    BufferedReader stdInput = new BufferedReader(new 
-		    	     InputStreamReader(process.getInputStream()));
-		    		String s = null;
-		    		while ((s = stdInput.readLine()) != null) {
-		    			System.out.println(s);
+		    BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		    	String s = null;
+		    	while ((s = stdInput.readLine()) != null) {
+		    		System.out.println(s);
 		    	}
 		    }
 		    catch (IOException e)
