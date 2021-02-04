@@ -8,16 +8,19 @@ import org.jnativehook.keyboard.NativeKeyListener;
 
 public class GlobalKeyListener implements NativeKeyListener  {
 	public void nativeKeyPressed(NativeKeyEvent e) {
-		System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+		String keypressed =(NativeKeyEvent.getKeyText(e.getKeyCode()));
+		if (keypressed == "Space") {
+			System.out.println("space pressed");
+		}
 	}
 
 	public void nativeKeyReleased(NativeKeyEvent e) {
-		System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+		String keyreleased =(NativeKeyEvent.getKeyText(e.getKeyCode()));
+		if (keyreleased == "Space") {
+			System.out.println("space released");
+		}
 	}
-
-	public void nativeKeyTyped(NativeKeyEvent e) {
-		System.out.println("Key Typed: " + e.getKeyText(e.getKeyCode()));
-	}
+	public void nativeKeyTyped(NativeKeyEvent e) {}
 
 	public static void main(String[] args) {
 		try {

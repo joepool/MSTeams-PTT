@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/joe/Downloads/jnativehook/jar/jnativehook-2.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/joe/eclipse-workspace/MSTeams-PTT/jnativehook-2.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
