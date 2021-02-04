@@ -11,7 +11,7 @@ public class KeyPress {
 				String[] cmd = {
 						"/bin/bash",
 						"-c",
-						"./script_python"
+						"./press_key"
 						};
 
 						Process p = Runtime.getRuntime().exec(cmd);
