@@ -1,4 +1,5 @@
 package ptt;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jnativehook.GlobalScreen;
@@ -7,22 +8,24 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
 public class GlobalKeyListener implements NativeKeyListener  {
+	public static boolean space = false;
+	@Override
 	public void nativeKeyPressed(NativeKeyEvent e) {
-		String keypressed =(NativeKeyEvent.getKeyText(e.getKeyCode()));
-		if (keypressed == "Space") {
-			System.out.println("space pressed");
-		}
+	    if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
+	        space = true;
+	        
+	        }
+	    }
+	@Override
+	public void nativeKeyReleased(NativeKeyEvent e) {
+	    if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
+	        space = false;
+	    }
 	}
 
-	public void nativeKeyReleased(NativeKeyEvent e) {
-		String keyreleased =(NativeKeyEvent.getKeyText(e.getKeyCode()));
-		if (keyreleased == "Space") {
-			System.out.println("space released");
-		}
-	}
 	public void nativeKeyTyped(NativeKeyEvent e) {}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		try {
 			GlobalScreen.registerNativeHook();
 		}
@@ -38,6 +41,12 @@ public class GlobalKeyListener implements NativeKeyListener  {
 		Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
 		logger.setLevel(Level.WARNING);
 		logger.setUseParentHandlers(false);
+		//below 4 lines is only for testing
+		while (true) {
+			System.out.println(space);
+			TimeUnit.MILLISECONDS.sleep(100);
+		}
+		
 	}
 	
 }
