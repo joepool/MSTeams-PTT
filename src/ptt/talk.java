@@ -7,7 +7,7 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
-public class GlobalKeyListener implements NativeKeyListener  {
+public class talk implements NativeKeyListener  {
 	public static boolean space = false;
 	@Override
 	public void nativeKeyPressed(NativeKeyEvent e) {
@@ -26,6 +26,8 @@ public class GlobalKeyListener implements NativeKeyListener  {
 	public void nativeKeyTyped(NativeKeyEvent e) {}
 
 	public static void main(String[] args) throws InterruptedException {
+		String window = GetActiveWindow.GetActive(null);
+		System.out.println(window);
 		try {
 			GlobalScreen.registerNativeHook();
 		}
@@ -36,7 +38,7 @@ public class GlobalKeyListener implements NativeKeyListener  {
 			System.exit(1);
 		}
 
-		GlobalScreen.addNativeKeyListener(new GlobalKeyListener());
+		GlobalScreen.addNativeKeyListener(new talk());
 		
 		Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
 		logger.setLevel(Level.WARNING);
@@ -46,7 +48,6 @@ public class GlobalKeyListener implements NativeKeyListener  {
 			System.out.println(space);
 			TimeUnit.MILLISECONDS.sleep(100);
 		}
-		
 	}
 	
 }

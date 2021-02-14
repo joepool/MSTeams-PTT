@@ -3,12 +3,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 public class GetActiveWindow {
-
-	public static void main(String[] args) {
-		    new GetActiveWindow();
-		  }
 		  
-		  public GetActiveWindow()
+		  public static String GetActive(String window)
 		  {
 		    Runtime runtime = Runtime.getRuntime();
 		    String applescriptCommand =  "global frontApp, frontAppName, windowTitle\n"
@@ -34,13 +30,14 @@ public class GetActiveWindow {
 		    BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		    	String s = null;
 		    	while ((s = stdInput.readLine()) != null) {
-		    		System.out.println(s);
+		    		window = s;
 		    	}
 		    }
 		    catch (IOException e)
 		    {
 		      e.printStackTrace();
 		    }
+		    return window;
 		  }
 	}
 	
