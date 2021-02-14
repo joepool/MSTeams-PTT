@@ -1,4 +1,5 @@
 package ptt;
+//import ptt.KeyPress;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +27,7 @@ public class talk implements NativeKeyListener  {
 	public void nativeKeyTyped(NativeKeyEvent e) {}
 
 	public static void main(String[] args) throws InterruptedException {
-		String window = GetActiveWindow.GetActive(null);
-		System.out.println(window);
+		
 		try {
 			GlobalScreen.registerNativeHook();
 		}
@@ -43,9 +43,18 @@ public class talk implements NativeKeyListener  {
 		Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
 		logger.setLevel(Level.WARNING);
 		logger.setUseParentHandlers(false);
-		//below 4 lines is only for testing
 		while (true) {
-			System.out.println(space);
+			if (space == true) {
+				TimeUnit.MILLISECONDS.sleep(300);
+				if (space == true) {
+					String window = GetActiveWindow.GetActive(null);
+					boolean window_check=(window.contains("eclipse"));
+					if (window_check == true) {
+						KeyPress.main(null);
+					}
+					//wait until space != true then keypress again and then exit the if statements - i just need to work out how tf to implement wait until
+				}
+			}
 			TimeUnit.MILLISECONDS.sleep(100);
 		}
 	}
