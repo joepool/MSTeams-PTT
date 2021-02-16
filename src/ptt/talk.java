@@ -47,12 +47,16 @@ public class talk implements NativeKeyListener  {
 			if (space == true) {
 				TimeUnit.MILLISECONDS.sleep(300);
 				if (space == true) {
+					TimeUnit.MILLISECONDS.sleep(50);
 					String window = GetActiveWindow.GetActive(null);
 					boolean window_check=(window.contains("eclipse"));
 					if (window_check == true) {
 						KeyPress.main(null);
 					}
-					//wait until space != true then keypress again and then exit the if statements - i just need to work out how tf to implement wait until
+					if (space == false) {
+						System.out.println("Released");
+					}
+					//need to stop the forever loop once space == true, then resume it when its =! true again
 				}
 			}
 			TimeUnit.MILLISECONDS.sleep(100);
